@@ -1,0 +1,26 @@
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>ucap components</display-name>
+
+	<listener>
+		<listener-class>com.ucap.components.listen.UcapSystemListener</listener-class>
+	</listener>
+	
+	<listener>
+    	<listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+   </listener>
+
+	<filter>
+		<filter-name>xsshtmlfilter</filter-name>
+		<filter-class>com.ucap.components.filter.XssHtmlFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>xsshtmlfilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	
+</web-app>
