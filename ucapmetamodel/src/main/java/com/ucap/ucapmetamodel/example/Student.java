@@ -49,7 +49,7 @@ public class Student implements Serializable {
 	@JoinTable(name="COMP_TEACHER_STU")
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "students", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<Score> scores = new ArrayList<Score>();
 
 	public String getId() {

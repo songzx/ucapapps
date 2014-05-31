@@ -56,12 +56,12 @@ public class Teacher implements Serializable {
 	
 	@Lob
 	@Basic(fetch = FetchType.LAZY) 
-	@Column(columnDefinition="CLOB", nullable=true) 
+	@Column(nullable=true) 
 	private String _clod;
 	
 	@Lob
 	@Basic(fetch = FetchType.LAZY) 
-	@Column(columnDefinition="CLOB", nullable=true) 
+	@Column(nullable=true) 
 	private String _blod;
 
 	public String getId() {

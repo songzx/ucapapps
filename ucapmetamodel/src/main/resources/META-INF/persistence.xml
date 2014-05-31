@@ -22,11 +22,11 @@
 		<class>com.ucap.ucapmetamodel.example.Son</class>
 
 		<properties>
-			<property name="openjpa.ConnectionURL" value="jdbc:oracle:thin:@192.168.1.197:1521:ORCL" />
-			<property name="openjpa.ConnectionDriverName"
-				value="com.ucap.ucaptools.jdbc.oracle.UcapOracleDriver" />
+			<property name="openjpa.ConnectionURL" value="jdbc:mysql://192.168.1.121:3306/ucapapps" />
+			<property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver" />
 			<property name="openjpa.ConnectionUserName" value="ucapapps" />
 			<property name="openjpa.ConnectionPassword" value="ucapapps" />
+			<property name="openjpa.jdbc.Schema" value="ucapapps" />
 			<property name="openjpa.Multithreaded" value="true" />
 			<property name="hbm2ddl.auto" value="create" />
 			<property name="openjpa.MetaDataRepository" value="Preload=true" />
@@ -43,8 +43,7 @@
 			<property name="openjpa.ConnectionFactoryProperties"
 				value="PrintParameters=true,PrettyPrintLineLength=80" />
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=True)" />
-			<property name="openjpa.jdbc.DBDictionary"
-				value="org.apache.openjpa.jdbc.sql.OracleDictionary" />
+			<property name="openjpa.jdbc.DBDictionary"	value="org.apache.openjpa.jdbc.sql.MySQLDictionary" />
 			<!-- 查询结果一次转化为对象的最多个数，相当于 JDBC的结果集对象Statement.set FetchSize。默认为-1，表示所有的查询对象立即初始化；0表示使用 
 				JDBC驱动默认的数值。 -->
 			<property name="openjpa.FetchBatchSize" value="0" />
@@ -52,7 +51,7 @@
 			<property name="openjpa.DataCache" value="true(CacheSize=5000, SoftReferenceSize=100)" />
 			<!-- 启用查询结果缓存，缓存的容量为1000，并且软引用的容量为100 -->
 			<property name="openjpa.QueryCache" value="true(CacheSize=5000, SoftReferenceSize=100)" />
-			<property name="openjpa.jdbc.Schema" value="ucapapps" />
+			
 			<property name="openjpa.Log" value="SQL=TRACE" />
 			<!-- <property name="openjpa.Log" value="SQL=TRACE,File=/data/gsmpro/logs/authority_openjpa.log,DefaultLevel=WARN, 
 				Runtime=INFO, Tool=INFO"/> -->
