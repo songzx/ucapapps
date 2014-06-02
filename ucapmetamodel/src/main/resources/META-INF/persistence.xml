@@ -20,6 +20,12 @@
 		<!-- 主从表 -->
 		<class>com.ucap.ucapmetamodel.example.Parent</class>
 		<class>com.ucap.ucapmetamodel.example.Son</class>
+		
+		<class>com.ucap.ucapmetamodel.components.WebAccount.WebAccount</class>
+		<class>com.ucap.ucapmetamodel.components.WebAccount.Enterprise</class>
+		<class>com.ucap.ucapmetamodel.components.WebAccount.LoginLog</class>
+		<class>com.ucap.ucapmetamodel.components.WebAccount.Person</class>
+
 
 		<properties>
 			<property name="openjpa.ConnectionURL" value="jdbc:mysql://192.168.1.121:3306/ucapapps" />

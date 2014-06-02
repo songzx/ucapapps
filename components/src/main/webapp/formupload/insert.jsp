@@ -1,12 +1,8 @@
-<%@page import="oracle.jdbc.OracleConnectionWrapper"%>
-<%@page import="oracle.jdbc.OracleConnection"%>
-<%@page import="oracle.sql.CLOB"%>
 <%@page import="java.sql.Clob"%>
 <%@page import="java.io.BufferedReader"%>
 <%@page import="org.apache.openjpa.jdbc.sql.Sized"%>
 <%@page import="java.io.InputStreamReader"%>
 <%@page import="java.io.Reader"%>
-<%@page import="oracle.sql.BLOB"%>
 <%@page import="java.io.InputStream"%>
 <%@page import="java.util.UUID"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>

@@ -40,7 +40,7 @@ public class QueryTest {
 	public void testQuery1() {
 		try {
 			System.out.println(entityManager);
-			List<SingleTable> singleTables = entityManager.createQuery("select s from Many s",SingleTable.class).getResultList();
+			List<SingleTable> singleTables = entityManager.createQuery("select s from WebAccount s",SingleTable.class).getResultList();
 			System.out.println(singleTables);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

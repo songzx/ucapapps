@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     http://www.springframework.org/schema/mvc
+     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<!-- *一级菜单,**多级菜单 若mapping重复,则优先匹配第一次通过的 -->
+	<mvc:resources location="/resources/bootstrap/css/"
+		mapping="/bootstrap/css/**" />
+	<mvc:resources location="/resources/bootstrap/js/"
+		mapping="/bootstrap/js/**" />
+	<mvc:resources location="/resources/bootstrap/img/"
+		mapping="/bootstrap/img/**" />
+
+	<mvc:resources location="/resources/css/" mapping="/css/**" />
+	<mvc:resources location="/resources/js/" mapping="/js/**" />
+	<mvc:resources location="/resources/images/" mapping="/images/**" />
+	<mvc:resources location="/resources/xml/" mapping="/xml/**" />
+
+	<mvc:resources location="/" mapping="*.htm" />
+	<mvc:resources location="/" mapping="*.html" />
+	
+
+
+	<!-- 放在WEB-INF下面的要通过control进行跳转的 <mvc:resources location="/WEB-INF/jsp/list/" 
+		mapping="/list/*.jsp" /> -->
+
+</beans>
