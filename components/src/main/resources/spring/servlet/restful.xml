@@ -18,10 +18,8 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.ucap.components.controllers.rest" />
 	<!-- <mvc:view-controller path="/login" view-name="login"/> 
-	<mvc:view-controller path="/admin/account/form2" />-->
-	
 	<mvc:view-controller path="/restful/web/login" view-name="login" />
-	<mvc:view-controller path="/restful/webaccount/loginout" view-name="loginout" />
+	<mvc:view-controller path="/restful/webaccount/loginout" view-name="loginout" />-->
 	
 	<!-- HandlerAdapter -> HandlerMapping
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -56,10 +54,16 @@
 			<mvc:exclude-mapping path="/webaccount/login"/>
 			<bean class="com.ucap.components.interceptor.CheckIsLoginHandlerInterceptorAdapter" />
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/webaccount/login"/>
+			<mvc:mapping path="/web/login"/>
+			<bean class="com.ucap.components.interceptor.FilterUrlToIndexHandlerInterceptorAdapter" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" >
 		<property name="mediaTypes">
 			<map>
 				<entry key="atom" value="application/atom+xml" />
@@ -71,7 +75,7 @@
 		<property name="viewResolvers">
 			<list>
 				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" >
 					<property name="viewClass"
 						value="org.springframework.web.servlet.view.JstlView" />
 					<property name="prefix" value="/WEB-INF/pages/" />

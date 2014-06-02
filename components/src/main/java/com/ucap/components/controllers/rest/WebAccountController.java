@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.method.annotation.SessionStatusMethodArgumentResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -24,7 +26,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
  * @version V1.0
  */
 @Controller
-@SessionAttributes("accountid")
+@SessionAttributes(value={"accountid"})
 @RequestMapping(value = "/webaccount", method = { RequestMethod.GET, RequestMethod.POST })
 public class WebAccountController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(WebAccountController.class);
@@ -32,27 +34,25 @@ public class WebAccountController {
 	@RequestMapping("/login")
 	public String login(@RequestParam(required=false) String account, @RequestParam(required=false) String passwd, @ModelAttribute String accountid,Model model) {
 		
-		if(("account".equals(account)&&"passwd".equals(passwd)) || accountid != null){
-			model.addAttribute("accountid", accountid);
+		if(("account".equals(account)&&"passwd".equals(passwd)) || !"".equals(accountid)){
+			//accountid = account;
+			model.addAttribute("accountid", account);
 			return UrlBasedViewResolver.FORWARD_URL_PREFIX+ "/restful/admin/index";
 		}
 		return UrlBasedViewResolver.FORWARD_URL_PREFIX+ "/restful/web/login";
 	}
 	
 	@RequestMapping("/loginout")
-	public String loginout(@ModelAttribute String accountid,Model model) {
-		model.asMap().remove("accountid");
+	public String loginout(@ModelAttribute String accountid,SessionStatus sessionStatus, Model model) {
+		sessionStatus.setComplete();
+		//自动重载session的值
+		//model.addAttribute("accountid", "test中文");
 		return UrlBasedViewResolver.FORWARD_URL_PREFIX+ "/restful/web/login";
 	}
 	
 	@RequestMapping("/regedit")
-	public ModelAndView regedit(@RequestParam HashMap<String, Object> param,ModelAndView modelandview) {
+	public String regedit(@RequestParam HashMap<String, Object> param) {
 		
-		modelandview.setViewName("login");
-		return modelandview;
-		//return UrlBasedViewResolver.FORWARD_URL_PREFIX+ "/restful/web/login";
+		return UrlBasedViewResolver.FORWARD_URL_PREFIX+ "/restful/web/login";
 	}
-
-	
-	
 }

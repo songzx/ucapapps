@@ -38,10 +38,10 @@
 							</ul></li>
 					</ul>
 					<form class="navbar-form pull-right" action="<c:url value="/restful/webaccount/login"/>" method="post">
-						<input name="account" class="span2" type="text" placeholder="帐号"> 
-						<input name="passwd" class="span2" type="password" placeholder="密码">
-						<button type="submit" class="btn btn-primary">登 陆</button>
-						<a href="<c:url value="/restful/web/webaccount_webaccount"/>" class="btn btn-primary">注册 &raquo;</a>
+						<input name="account" class="span2" type="text" placeholder="帐号" /> 
+						<input name="passwd" class="span2" type="password" placeholder="密码"/>
+						<button type="submit" class="btn btn-primary btn-small">登 陆</button>
+						<a href="<c:url value="/restful/web/webaccount_webaccount"/>" class="btn btn-primary btn-small">注册 &raquo;</a>
 					</form>
 				</div>
 				<!--/.nav-collapse -->

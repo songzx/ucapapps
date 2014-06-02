@@ -55,7 +55,7 @@ body {
 			<label class="checkbox"> <input type="checkbox" value="remember-me" />
 				保存密码
 			</label>
-			<button class="btn btn-large btn-primary" type="submit">登	陆</button>
+			<button class="btn btn-small btn-primary" type="submit">登	陆</button>
 			<a href="<c:url value="/restful/web/webaccount_webaccount"/>" class="btn btn-primary">注册 &raquo;</a>
 		</form>
 	</div>
