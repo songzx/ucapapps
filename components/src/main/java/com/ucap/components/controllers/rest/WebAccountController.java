@@ -51,7 +51,7 @@ public class WebAccountController {
 	}
 	
 	@RequestMapping("/regedit")
-	public String regedit(@RequestParam HashMap<String, Object> param) {
+	public String regedit(@RequestParam HashMap<String, Object> param,Model model) {
 		
 		return UrlBasedViewResolver.FORWARD_URL_PREFIX+ "/restful/web/login";
 	}

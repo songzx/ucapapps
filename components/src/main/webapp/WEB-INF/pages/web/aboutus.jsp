@@ -18,5 +18,9 @@
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </head>
 <body>
+<div class="well">
+  UCAP System V1.0,你懂的!
+</div>
+
 </body>
 </html>
