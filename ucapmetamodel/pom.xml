@@ -16,7 +16,6 @@
 	</properties>
 
 	<build>
-
 		<extensions>
 			<extension>
 				<groupId>org.apache.openjpa</groupId>

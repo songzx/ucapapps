@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     http://www.springframework.org/schema/mvc
+     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.ucap.components.controllers.admin" />
+	
+	
+	<mvc:annotation-driven />
+	
+	<!-- 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.ucap.components.interceptor.LogHandlerInterceptorAdapter" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**"/>
+			<mvc:exclude-mapping path="/webaccount/login"/>
+			<bean class="com.ucap.components.interceptor.CheckIsLoginHandlerInterceptorAdapter" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/webaccount/login"/>
+			<mvc:mapping path="/web/login"/>
+			<bean class="com.ucap.components.interceptor.FilterUrlToIndexHandlerInterceptorAdapter" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/webaccount/login"/>
+			<mvc:mapping path="/web/**"/>
+			<bean class="com.ucap.components.interceptor.XssHtmlHandlerInterceptorAdapter" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+ 	-->
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" >
+		<property name="mediaTypes">
+			<map>
+				<entry key="atom" value="application/atom+xml" />
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" >
+					<property name="viewClass"
+						value="org.springframework.web.servlet.view.JstlView" />
+					<property name="prefix" value="/WEB-INF/pages/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+					<property name="contentType" value="application/json;charset=UTF-8" />
+				</bean>
+				<bean class="com.ucap.components.view.MyAtomFeedView">
+					<property name="contentType" value="application/atom+xml;charset=UTF-8" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>

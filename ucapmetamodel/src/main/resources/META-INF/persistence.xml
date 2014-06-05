@@ -28,7 +28,7 @@
 
 
 		<properties>
-			<property name="openjpa.ConnectionURL" value="jdbc:mysql://192.168.1.121:3306/ucapapps" />
+			<property name="openjpa.ConnectionURL" value="jdbc:mysql://192.168.1.201:3306/ucapapps" />
 			<property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver" />
 			<property name="openjpa.ConnectionUserName" value="ucapapps" />
 			<property name="openjpa.ConnectionPassword" value="ucapapps" />

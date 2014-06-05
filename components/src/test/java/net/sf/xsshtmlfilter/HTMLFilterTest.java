@@ -3,6 +3,7 @@ package net.sf.xsshtmlfilter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import java.util.Arrays;
 import java.util.Collections;
