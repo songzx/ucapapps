@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,8 +38,8 @@
 							</ul></li>
 					</ul>
 					<form class="navbar-form pull-right" action="<c:url value="/restful/webaccount/login"/>" method="post">
-						<input name="account" class="span2" style="padding:2px 2px;" type="text" placeholder="帐号" /> 
-						<input name="passwd" class="span2" style="padding:2px 2px;" type="password" placeholder="密码"/>
+						<input name="account" class="span2" type="text" placeholder="帐号" /> 
+						<input name="passwd" class="span2" type="password" placeholder="密码"/>
 						<button type="submit" class="btn btn-primary btn-small">登 陆</button>
 						<a href="<c:url value="/restful/web/webaccount_webaccount"/>" class="btn btn-primary btn-small">注册 &raquo;</a>
 					</form>
