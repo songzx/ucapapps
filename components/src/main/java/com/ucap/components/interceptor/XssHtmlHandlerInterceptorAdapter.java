@@ -1,27 +1,27 @@
-package com.ucap.components.filter;
+package com.ucap.components.interceptor;
 
-import java.net.URLDecoder;
-import java.util.regex.Matcher;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
+import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import net.sf.xsshtmlfilter.HTMLFilter;
+import com.ucap.components.filter.UcapHttpServletRequestWrapper;
 
-/**
- * @Title: UcapHttpServletRequestWrapper.java
- * @Package com.ucap.components.filter
- * @Description: TODO
- * @author 0000
- * @date 2014年5月13日 下午3:36:59
- * @version V1.0
+/**   
+ * @Title: XssHtmlHandlerInterceptorAdapter.java 
+ * @Package com.ucap.components.interceptor 
+ * @Description: Xss拦截器,待思考,可以做在类型转换器那 
+ * @author songzx
+ * @date 2014年6月4日 下午3:50:37 
+ * @version V1.0   
  */
-public class UcapHttpServletRequestWrapper extends HttpServletRequestWrapper {
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UcapHttpServletRequestWrapper.class);
-	
+public class XssHtmlHandlerInterceptorAdapter extends HandlerInterceptorAdapter {
+
 	private static final Pattern P_AMP = Pattern.compile("&");
 	private static final Pattern P_QUOTE = Pattern.compile("\"");
 	private static final Pattern P_APOSTROPHE = Pattern.compile("'");
@@ -40,50 +40,16 @@ public class UcapHttpServletRequestWrapper extends HttpServletRequestWrapper {
 	private static final Pattern P_VERTICALBAR  = Pattern.compile("\\|");
 	private static final Pattern P_LEFTSQUAREBRACKET  = Pattern.compile("\\[");
 	private static final Pattern P_RIGHTSQUAREBRACKET  = Pattern.compile("\\]");
-
-	public UcapHttpServletRequestWrapper(HttpServletRequest request) {
-		super(request);
-	}
-
+	
 	@Override
-	public String getParameter(String name) {
-		String val = super.getParameter(name);
-		if (val == null || "".equals(val.trim())) {
-			return null;
-		}
-		if (val.trim().length() <= 2048) {
-			try {
-				StringBuffer sb = new StringBuffer();
-				Matcher matcher = P_URLENCODE.matcher(val);
-				 int index = 0;
-				 while(matcher.find()){
-					 sb.append(val.subSequence(index, matcher.start()));
-					 sb.append(URLDecoder.decode(matcher.group(),"UTF-8"));
-					 index = matcher.end();
-				 }
-				 sb.append(val.substring(index));
-				 
-				 val = sb.toString();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			val = new HTMLFilter(true).filter(val);
-			val = dencode(val);
-		} else {
-			LOGGER.info("输入的参数过长:" + val);
-			val = null;
-		}
-		return val;
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+		super.postHandle(new UcapHttpServletRequestWrapper(request), response, handler, modelAndView);
 	}
-
-	public String dencode(String val) {
-		//'1','2','3'如果识别
+	
+	private String dencode(String val) {
 		if(P_DATAFORMATE.matcher(val).find() || P_NUMBER.matcher(val).find()){
 			return val;
 		}
-		
-		
-		
 		
 		val = P_AMP.matcher(val).replaceAll("&amp;");
 		val = P_QUOTE.matcher(val).replaceAll("&quot;");
@@ -102,25 +68,5 @@ public class UcapHttpServletRequestWrapper extends HttpServletRequestWrapper {
 		return val;
 	}
 	
-	
 
-	@Override
-	public String[] getParameterValues(String name) {
-		String strs[] = super.getParameterValues(name);
-		if (strs == null) {
-			return null;
-		}
-		for (int i = 0; i < strs.length; i++) {
-			if (strs[i].trim().length() <= 2048) {
-				// return new HTMLFilter(true).filter(val);
-				strs[i] = new HTMLFilter(false).filter(strs[i]);
-				strs[i] = dencode(strs[i]);
-			} else {
-				LOGGER.info("输入的参数过长:" + strs[i]);
-				strs[i] = null;
-			}
-
-		}
-		return strs;
-	}
 }

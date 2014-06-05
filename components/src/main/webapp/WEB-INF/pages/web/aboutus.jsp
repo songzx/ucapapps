@@ -6,8 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>关于我们</title>
-<link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"
-	rel="stylesheet" media="screen" />
+<link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" media="screen" />
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="<c:url value="/js/jquery-1.9.0.min.js"/>"></script>
