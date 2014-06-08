@@ -195,7 +195,7 @@ var App = function() {
 
 			var url = $(this).attr("href");
 			var menuContainer = jQuery('.page-sidebar ul');
-			//var pageContent = $('.page-content');
+			//var pageContent = $('#showcontent');
 			var pageContentBody = $('.page-content .page-content-body');
 
 			menuContainer.children('li.active').removeClass('active');
@@ -210,7 +210,7 @@ var App = function() {
 			//App.blockUI(pageContent, false);
 
 			/*$.post(url, {}, function(res) {
-				App.unblockUI(pageContent);
+				//App.unblockUI(pageContent);
 				pageContentBody.html(res);
 				App.fixContentHeight(); // fix content height
 				App.initUniform(); // initialize uniform elements

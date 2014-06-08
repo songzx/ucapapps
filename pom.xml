@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ucap</groupId>
@@ -15,20 +16,20 @@
 		<module>ucaptools</module>
 		<module>ucapmetamodel</module>
 		<module>ucapcas</module>
-    <module>ucapextends</module>
-  </modules>
+		<module>ucapextends</module>
+	</modules>
 	<repositories>
 		<repository>
 			<id>ucap-public</id>
 			<name>ucap-public</name>
-			<url>http://192.168.1.201:18081/nexus/content/groups/public/</url>
+			<url>http://192.168.1.121:18081/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://192.168.1.201:18081/nexus/content/groups/public/</url>
+			<url>http://192.168.1.121:18081/nexus/content/groups/public/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -236,6 +237,11 @@
 			<groupId>net.java.dev.rome</groupId>
 			<artifactId>rome</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.fusesource</groupId>
+			<artifactId>sigar</artifactId>
+			<version>1.6.4</version>
 		</dependency>
 	</dependencies>
 

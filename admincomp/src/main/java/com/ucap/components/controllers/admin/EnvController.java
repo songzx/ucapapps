@@ -1,5 +1,6 @@
 package com.ucap.components.controllers.admin;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ucap.ucaptools.SystemInfo;
+import com.ucap.ucaptools.sigar.SigarUtil;
 
 /**
  * @Title: EnvController.java
@@ -24,18 +28,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Scope("singleton")
 public class EnvController {
 	private final static Map<String, Object> webparam = new HashMap<String, Object>();
-
+	private SystemInfo systemInfo = null;
+	
 	@RequestMapping(value = "/getwebparam", produces = "application/json")
 	public 	Map<String,Object> getwebparam(){
 		Map<String,Object> webserver = new HashMap<String, Object>();
-		webserver.put("java.home", System.getProperty("java.home"));
-		webserver.put("java.version", System.getProperty("java.version"));
-		webserver.put("sun.boot.library.path", System.getProperty("sun.boot.library.path"));
-		webserver.put("os.name", System.getProperty("os.name"));
-		webserver.put("file.encoding", System.getProperty("file.encoding"));
-		webserver.put("file.separator", System.getProperty("file.separator"));
+		try {
+			systemInfo = SigarUtil.getInstance();
+			webparam.put("jvmproperty", systemInfo.getJvmProperty());
+			webparam.put("os", systemInfo.getOs());
+			webparam.put("memory",systemInfo.getMemory());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		webparam.put("webserver", webserver);
 		return webparam;
 	}
 	

@@ -11,6 +11,11 @@
 	<packaging>war</packaging>
 	<url>http://www.ucap.com.cn</url>
 	<dependencies>
+	<dependency>
+		<groupId>com.ucap</groupId>
+		<artifactId>ucaptools</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
 	</dependencies>
 	<build>
 		<finalName>admincomp</finalName>
