@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 public class UcapSystemListener implements ServletContextListener {
 	private static Logger logger = null;
 
+	
 	@Override
 	public void contextDestroyed(ServletContextEvent servletcontextevent) {
 		logger.info("应用配置监听正在销毁.....");

@@ -1,11 +1,7 @@
 var Index = function () {
-
-
     return {
-
         //main function to initiate the module
         init: function () {
-
             App.addResponsiveHandler(function () {
                 Index.initCalendar();
                 jQuery('.vmaps').each(function () {
@@ -14,14 +10,11 @@ var Index = function () {
                 });
             });
         },
-
         initJQVMAP: function () {
-
             var showMap = function (name) {
                 jQuery('.vmaps').hide();
                 jQuery('#vmap_' + name).show();
             }
-
             var setMap = function (name) {
                 var data = {
                     map: 'world_en',
@@ -40,7 +33,6 @@ var Index = function () {
                     selectedRegion: null,
                     showTooltip: true,
                     onLabelShow: function (event, label, code) {
-
                     },
                     onRegionOver: function (event, code) {
                         if (code == 'ca') {
@@ -52,7 +44,6 @@ var Index = function () {
                         alert(message);
                     }
                 };
-
                 data.map = name + '_en';
                 var map = jQuery('#vmap_' + name);
                 if (!map) {
@@ -63,22 +54,18 @@ var Index = function () {
                 map.vectorMap(data);
                 map.hide();
             }
-
             setMap("world");
             setMap("usa");
             setMap("europe");
             setMap("russia");
             setMap("germany");
             showMap("world");
-
             jQuery('#regional_stat_world').click(function () {
                 showMap("world");
             });
-
             jQuery('#regional_stat_usa').click(function () {
                 showMap("usa");
             });
-
             jQuery('#regional_stat_europe').click(function () {
                 showMap("europe");
             });
@@ -88,23 +75,18 @@ var Index = function () {
             jQuery('#regional_stat_germany').click(function () {
                 showMap("germany");
             });
-
             $('#region_statistics_loading').hide();
             $('#region_statistics_content').show();
         },
-
         initCalendar: function () {
             if (!jQuery().fullCalendar) {
                 return;
             }
-
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear();
-
             var h = {};
-
             if ($('#calendar').width() <= 400) {
                 $('#calendar').addClass("mobile");
                 h = {
@@ -128,7 +110,6 @@ var Index = function () {
                     };
                 }               
             }
-
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
             $('#calendar').fullCalendar({ //re-initialize the calendar
                 disableDragging: false,
@@ -179,17 +160,13 @@ var Index = function () {
                 ]
             });
         },
-
         initCharts: function () {
             if (!jQuery.plot) {
                 return;
             }
-
             var data = [];
             var totalPoints = 250;
-
             // random data generator for plot charts
-
             function getRandomData() {
                 if (data.length > 0) data = data.slice(1);
                 // do a random walk
@@ -205,7 +182,6 @@ var Index = function () {
                 for (var i = 0; i < data.length; ++i) res.push([i, data[i]])
                 return res;
             }
-
             function showTooltip(title, x, y, contents) {
                 $('<div id="tooltip" class="chart-tooltip"><div class="date">' + title + '<\/div><div class="label label-success">CTR: ' + x / 10 + '%<\/div><div class="label label-important">Imp: ' + x * 12 + '<\/div><\/div>').css({
                     position: 'absolute',
@@ -218,11 +194,9 @@ var Index = function () {
                     'background-color': '#fff',
                 }).appendTo("body").fadeIn(200);
             }
-
             function randValue() {
                 return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
             }
-
             var pageviews = [
                 [1, randValue()],
                 [2, randValue()],
@@ -255,7 +229,6 @@ var Index = function () {
                 [29, 90 + randValue()],
                 [30, 95 + randValue()]
             ];
-
             var visitors = [
                 [1, randValue() - 5],
                 [2, randValue() - 5],
@@ -288,12 +261,9 @@ var Index = function () {
                 [29, 27 + randValue()],
                 [30, 31 + randValue()]
             ];
-
             if ($('#site_statistics').size() != 0) {
-
                 $('#site_statistics_loading').hide();
                 $('#site_statistics_content').show();
-
                 var plot_statistics = $.plot($("#site_statistics"), [{
                         data: pageviews,
                         label: "Unique Visits"
@@ -337,7 +307,6 @@ var Index = function () {
                         tickDecimals: 0
                     }
                 });
-
                 var previousPoint = null;
                 $("#site_statistics").bind("plothover", function (event, pos, item) {
                     $("#x").text(pos.x.toFixed(2));
@@ -345,11 +314,9 @@ var Index = function () {
                     if (item) {
                         if (previousPoint != item.dataIndex) {
                             previousPoint = item.dataIndex;
-
                             $("#tooltip").remove();
                             var x = item.datapoint[0].toFixed(2),
                                 y = item.datapoint[1].toFixed(2);
-
                             showTooltip('24 Jan 2013', item.pageX, item.pageY, item.series.label + " of " + x + " = " + y);
                         }
                     } else {
@@ -358,12 +325,10 @@ var Index = function () {
                     }
                 });
             }               
-
             if ($('#load_statistics').size() != 0) {
                  //server load
                 $('#load_statistics_loading').hide();
                 $('#load_statistics_content').show();
-        
                 var updateInterval = 30;
                 var plot_statistics = $.plot($("#load_statistics"), [getRandomData()], {
                 series: {
@@ -398,27 +363,21 @@ var Index = function () {
                     borderWidth: 0
                 }
                 });
-                
                 function statisticsUpdate() {
                 plot_statistics.setData([getRandomData()]);
                 plot_statistics.draw();
                 setTimeout(statisticsUpdate, updateInterval);
-                
                 }
-                
                 statisticsUpdate();
-
                 $('#load_statistics').bind("mouseleave", function () {
                     $("#tooltip").remove();
                 });
             }
-
             if ($('#site_activities').size() != 0) {
                 //site activities
                 var previousPoint2 = null;
                 $('#site_activities_loading').hide();
                 $('#site_activities_content').show();
-
                 var activities = [
                     [1, 10],
                     [2, 9],
@@ -473,7 +432,6 @@ var Index = function () {
                     [50, 12],
                     [51, 10]
                 ];
-
                 var plot_activities = $.plot(
                     $("#site_activities"), [{
                         data: activities,
@@ -512,7 +470,6 @@ var Index = function () {
                         max: 20
                     }
                 });
-
                 $("#site_activities").bind("plothover", function (event, pos, item) {
                     $("#x").text(pos.x.toFixed(2));
                     $("#y").text(pos.y.toFixed(2));
@@ -526,36 +483,30 @@ var Index = function () {
                         }
                     }
                 });
-
                 $('#site_activities').bind("mouseleave", function () {
                     $("#tooltip").remove();
                 });
             }
         },
-
         initMiniCharts: function () {
-             
             $('.easy-pie-chart .number.transactions').easyPieChart({
                 animate: 1000,
                 size: 75,
                 lineWidth: 3,
                 barColor: App.getLayoutColorCode('yellow')
             });
-
             $('.easy-pie-chart .number.visits').easyPieChart({
                 animate: 1000,
                 size: 75,
                 lineWidth: 3,
                 barColor: App.getLayoutColorCode('green')
             });
-             
             $('.easy-pie-chart .number.bounce').easyPieChart({
                 animate: 1000,
                 size: 75,
                 lineWidth: 3,
                 barColor: App.getLayoutColorCode('red')
             });
-
             $('.easy-pie-chart-reload').click(function(){
                 $('.easy-pie-chart .number').each(function() {
                     var newValue = Math.floor(100*Math.random());
@@ -563,7 +514,6 @@ var Index = function () {
                     $('span', this).text(newValue);
                 });
             });
-               
             $("#sparkline_bar").sparkline([8,9,10,11,10,10,12,10,10,11,9,12,11,10,9,11,13,13,12], {
                 type: 'bar',
                 width: '100',
@@ -572,7 +522,6 @@ var Index = function () {
                 barColor: '#35aa47',
                 negBarColor: '#e02222'}
             );
-
             $("#sparkline_bar2").sparkline([9,11,12,13,12,13,10,14,13,11,11,12,11,11,10,12,11,10], {
                 type: 'bar',
                 width: '100',
@@ -581,32 +530,25 @@ var Index = function () {
                 barColor: '#ffb848',
                 negBarColor: '#e02222'}
             );
-
             $("#sparkline_line").sparkline([9,10,9,10,10,11,12,10,10,11,11,12,11,10,12,11,10,12], {
                 type: 'line',
                 width: '100',
                 height: '55',
                 lineColor: '#ffb848'
             });
-
         },
-
         initChat: function () {
-
             var cont = $('#chats');
             var list = $('.chats', cont);
             var form = $('.chat-form', cont);
             var input = $('input', form);
             var btn = $('.btn', form);
-
             var handleClick = function (e) {
                 e.preventDefault();
-                
                 var text = input.val();
                 if (text.length == 0) {
                     return;
                 }
-
                 var time = new Date();
                 var time_str = time.toString('MMM dd, yyyy hh:mm');
                 var tpl = '';
@@ -621,20 +563,17 @@ var Index = function () {
                 tpl += '</span>';
                 tpl += '</div>';
                 tpl += '</li>';
-
                 var msg = list.append(tpl);
                 input.val("");
                 $('.scroller', cont).slimScroll({
                     scrollTo: list.height()
                 });
             }
-
             /*
             $('.scroller', cont).slimScroll({
                 scrollTo: list.height()
             });
             */
-
             btn.click(handleClick);
             input.keypress(function (e) {
                 if (e.which == 13) {
@@ -643,21 +582,16 @@ var Index = function () {
                 }
             });
         },
-
         initDashboardDaterange: function () {
-
         	var daysOfWeek = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
             $('#dashboard-report-range').show();
             $('#dashboard-report-range span').html(Date.today().toString('yyyy年MM月d日')+'&nbsp;&nbsp;'+daysOfWeek[Date.today().getDay()]);
         },
-
         initIntro: function () {
             if ($.cookie('intro_show')) {
                 return;
             }
-
             $.cookie('intro_show', 1);
-
             setTimeout(function () {
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
@@ -673,7 +607,6 @@ var Index = function () {
                     // (string | optional) the class name you want to apply to that specific message
                     class_name: 'my-sticky-class'
                 });
-
                 // You can have it return a unique id, this can be used to manually remove it later using
                 setTimeout(function () {
                     $.gritter.remove(unique_id, {
@@ -682,7 +615,6 @@ var Index = function () {
                     });
                 }, 12000);
             }, 2000);
-
             setTimeout(function () {
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
@@ -698,7 +630,6 @@ var Index = function () {
                     // (string | optional) the class name you want to apply to that specific message
                     class_name: 'my-sticky-class'
                 });
-
                 // You can have it return a unique id, this can be used to manually remove it later using
                 setTimeout(function () {
                     $.gritter.remove(unique_id, {
@@ -707,18 +638,14 @@ var Index = function () {
                     });
                 }, 13000);
             }, 8000);
-
             setTimeout(function () {
-
                 $('#styler').pulsate({
                     color: "#bb3319",
                     repeat: 10
                 });
-
                 $.extend($.gritter.options, {
                     position: 'top-left'
                 });
-
                 var unique_id = $.gritter.add({
                     position: 'top-left',
                     // (string | mandatory) the heading of the notification
@@ -734,11 +661,9 @@ var Index = function () {
                     // (string | optional) the class name you want to apply to that specific message
                     class_name: 'my-sticky-class'
                 });
-
                 $.extend($.gritter.options, {
                     position: 'top-right'
                 });
-
                 // You can have it return a unique id, this can be used to manually remove it later using
                 setTimeout(function () {
                     $.gritter.remove(unique_id, {
@@ -746,15 +671,11 @@ var Index = function () {
                         speed: 'slow'
                     });
                 }, 15000);
-
             }, 23000);
-
             setTimeout(function () {
-
                 $.extend($.gritter.options, {
                     position: 'top-left'
                 });
-
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
                     title: 'Notification',
@@ -769,18 +690,15 @@ var Index = function () {
                     // (string | optional) the class name you want to apply to that specific message
                     class_name: 'my-sticky-class'
                 });
-
                 setTimeout(function () {
                     $.gritter.remove(unique_id, {
                         fade: true,
                         speed: 'slow'
                     });
                 }, 4000);
-
                 $.extend($.gritter.options, {
                     position: 'top-right'
                 });
-
                 var number = $('#header_notification_bar .badge').text();
                 number = parseInt(number);
                 number = number + 3;
@@ -789,15 +707,11 @@ var Index = function () {
                     color: "#66bce6",
                     repeat: 5
                 });
-
             }, 40000);
-
             setTimeout(function () {
-
                 $.extend($.gritter.options, {
                     position: 'top-left'
                 });
-
                 var unique_id = $.gritter.add({
                     // (string | mandatory) the heading of the notification
                     title: 'Inbox',
@@ -812,18 +726,15 @@ var Index = function () {
                     // (string | optional) the class name you want to apply to that specific message
                     class_name: 'my-sticky-class'
                 });
-
                 $.extend($.gritter.options, {
                     position: 'top-right'
                 });
-
                 setTimeout(function () {
                     $.gritter.remove(unique_id, {
                         fade: true,
                         speed: 'slow'
                     });
                 }, 4000);
-
                 var number = $('#header_inbox_bar .badge').text();
                 number = parseInt(number);
                 number = number + 2;
@@ -832,10 +743,7 @@ var Index = function () {
                     color: "#dd5131",
                     repeat: 5
                 });
-
             }, 60000);
         }
-
     };
-
 }();

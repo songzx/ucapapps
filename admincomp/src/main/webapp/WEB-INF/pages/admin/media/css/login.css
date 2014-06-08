@@ -57,6 +57,7 @@ Login page
 
 .login .content .input-icon .m-wrap {  
   margin: 0px !important;
+  height: 36px;
 }
 
 .login .content .forget-form {
