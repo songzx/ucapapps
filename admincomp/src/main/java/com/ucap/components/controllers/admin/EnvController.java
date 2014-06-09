@@ -36,7 +36,7 @@ public class EnvController {
 		try {
 			systemInfo = SigarUtil.getInstance();
 			webparam.put("jvmproperty", systemInfo.getJvmProperty());
-			webparam.put("os", systemInfo.getOs());
+			//webparam.put("os", systemInfo.getOs());
 			webparam.put("memory",systemInfo.getMemory());
 		} catch (IOException e) {
 			e.printStackTrace();

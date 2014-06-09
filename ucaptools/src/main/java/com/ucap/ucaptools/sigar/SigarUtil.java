@@ -44,11 +44,12 @@ public class SigarUtil implements SystemInfo {
 	public static SigarUtil getInstance() throws IOException {
 		if (sigarUtil == null) {
 			String file = Thread.currentThread().getContextClassLoader().getResource("sigar/.sigar_shellrc").getPath();
+			//String file = (SigarUtil.class.getResource("").getPath()+"sigar/.sigar_shellrc").substring(6);
+			///file = SigarUtil.class.getProtectionDomain().getCodeSource().getLocation().;
 			File classPath = new File(file).getParentFile();
-
 			String path = System.getProperty("java.library.path");
 			if (System.getProperty("os.name").toLowerCase().contains("window")) {
-				path += ";" + classPath.getCanonicalPath();
+				path +=  ";"+classPath.getCanonicalPath() ;
 			} else {
 				path += ":" + classPath.getCanonicalPath();
 			}
@@ -324,5 +325,7 @@ public class SigarUtil implements SystemInfo {
 		return result;
 	}
 	
-
+	public static void main(String[] args) throws IOException {
+		System.out.println(SigarUtil.getInstance().getMemory().toString());
+	}
 }
