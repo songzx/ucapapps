@@ -1,6 +1,5 @@
 package com.ucap.components.interceptor;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Pattern;
 

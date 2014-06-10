@@ -1,6 +1,5 @@
 package com.ucap.components.controllers.rest;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
