@@ -37,40 +37,30 @@ var Env = function() {
 					// server load
 					$('#load_memory_loading').hide();
 					$('#load_memory_content').show();
-					var updateInterval = 30;
-					var plot_statistics = $.plot($("#load_statistics"), [ getRandomData() ], {
-						series : {
-							shadowSize : 1
-						},
-						lines : {
-							show : true,
-							lineWidth : 0.2,
-							fill : true,
-							fillColor : {
-								colors : [ {
-									opacity : 0.1
-								}, {
-									opacity : 1
-								} ]
-							}
-						},
-						yaxis : {
-							min : 0,
-							max : 100,
-							tickFormatter : function(v) {
-								return v + "%";
-							}
-						},
-						xaxis : {
-							show : false
-						},
-						colors : [ "#e14e3d" ],
-						grid : {
-							tickColor : "#a8a3a3",
-							borderWidth : 0
-						}
-					});
-
+					$
+					$('#load_memory_content').highcharts({
+			            title: {
+			                text: 'CPU 运行情况'
+			            },
+			            yAxis: {
+			                title: {
+			                    text: '运行百分比(%)'
+			                }
+			            },
+			            xAxis: {
+			            	max : 60*24,
+			                title: {
+			                    text: '60*24分钟'
+			                }
+			            },
+			            series: [{
+			                type: 'area',
+			                name: '每分钟监控',
+			                data: [
+			                    0.1446, 0.5445, 0.3444, 0.8451,    0.9418
+			                ]
+			            }]
+			        });
 					// $('#tab_1_2').html();
 					// $('#tab_1_3').html();
 					// $('#tab_1_4').html();

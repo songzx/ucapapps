@@ -44,12 +44,14 @@ public class SigarUtil implements SystemInfo {
 	public static SigarUtil getInstance() throws IOException {
 		if (sigarUtil == null) {
 			String file = Thread.currentThread().getContextClassLoader().getResource("sigar/.sigar_shellrc").getPath();
-			//String file = (SigarUtil.class.getResource("").getPath()+"sigar/.sigar_shellrc").substring(6);
-			///file = SigarUtil.class.getProtectionDomain().getCodeSource().getLocation().;
+			// String file =
+			// (SigarUtil.class.getResource("").getPath()+"sigar/.sigar_shellrc").substring(6);
+			// /file =
+			// SigarUtil.class.getProtectionDomain().getCodeSource().getLocation().;
 			File classPath = new File(file).getParentFile();
 			String path = System.getProperty("java.library.path");
 			if (System.getProperty("os.name").toLowerCase().contains("window")) {
-				path +=  ";"+classPath.getCanonicalPath() ;
+				path += ";" + classPath.getCanonicalPath();
 			} else {
 				path += ":" + classPath.getCanonicalPath();
 			}
@@ -262,12 +264,10 @@ public class SigarUtil implements SystemInfo {
 		return result;
 	}
 
-	
-
 	@Override
 	public Map<String, Object> getJvmProperty() {
 		Map<String, Object> result = new HashMap<String, Object>();
-		
+
 		try {
 			Runtime r = Runtime.getRuntime();
 			Properties props = System.getProperties();
@@ -283,16 +283,16 @@ public class SigarUtil implements SystemInfo {
 			System.out.println("计算机域名:    " + userDomain);
 			System.out.println("本地ip地址:    " + ip);
 			System.out.println("本地主机名:    " + addr.getHostName());
-			
-			result.put("jvmtmemory", r.totalMemory());//JVM可以使用的总内存
-			result.put("jvmfmemory", r.freeMemory());//JVM可以使用的剩余内存
-			result.put("jvmavailableprocessors", r.availableProcessors());//JVM可以使用的处理器个数
-			
+
+			result.put("jvmtmemory", r.totalMemory());// JVM可以使用的总内存
+			result.put("jvmfmemory", r.freeMemory());// JVM可以使用的剩余内存
+			result.put("jvmavailableprocessors", r.availableProcessors());// JVM可以使用的处理器个数
+
 			System.out.println("Java的运行环境供应商：    " + props.getProperty("java.vendor"));
 			System.out.println("Java供应商的URL：    " + props.getProperty("java.vendor.url"));
-			result.put("java.home", props.getProperty("java.home"));//Java的安装路径
-			result.put("java.version", props.getProperty("java.version"));//Java的运行环境版本
-			
+			result.put("java.home", props.getProperty("java.home"));// Java的安装路径
+			result.put("java.version", props.getProperty("java.version"));// Java的运行环境版本
+
 			System.out.println("Java的虚拟机规范版本：    " + props.getProperty("java.vm.specification.version"));
 			System.out.println("Java的虚拟机规范供应商：    " + props.getProperty("java.vm.specification.vendor"));
 			System.out.println("Java的虚拟机规范名称：    " + props.getProperty("java.vm.specification.name"));
@@ -307,9 +307,9 @@ public class SigarUtil implements SystemInfo {
 			System.out.println("加载库时搜索的路径列表：    " + props.getProperty("java.library.path"));
 			System.out.println("默认的临时文件路径：    " + props.getProperty("java.io.tmpdir"));
 			System.out.println("一个或多个扩展目录的路径：    " + props.getProperty("java.ext.dirs"));
-			
-			result.put("os.name", props.getProperty("os.name"));//操作系统的名称
-			
+
+			result.put("os.name", props.getProperty("os.name"));// 操作系统的名称
+
 			System.out.println("操作系统的构架：    " + props.getProperty("os.arch"));
 			System.out.println("操作系统的版本：    " + props.getProperty("os.version"));
 			System.out.println("文件分隔符：    " + props.getProperty("file.separator"));
@@ -321,10 +321,10 @@ public class SigarUtil implements SystemInfo {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
-	
+
 	public static void main(String[] args) throws IOException {
 		System.out.println(SigarUtil.getInstance().getMemory().toString());
 	}

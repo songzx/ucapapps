@@ -23,7 +23,6 @@ import org.slf4j.LoggerFactory;
  */
 public class UcapSystemListener implements ServletContextListener {
 	private static Logger logger = null;
-
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent servletcontextevent) {

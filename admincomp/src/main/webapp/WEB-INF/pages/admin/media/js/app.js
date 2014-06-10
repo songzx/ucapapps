@@ -216,7 +216,7 @@ var App = function() {
 				App.initUniform(); // initialize uniform elements
 			});*/
 			//使用ajax加载页面
-			$('#showcontent').load(url,{},function(){
+			$('#showcontent').load(url,{_time:Date.toLocaleString()},function(){
 				App.fixContentHeight();
 				App.initUniform();
 			});
