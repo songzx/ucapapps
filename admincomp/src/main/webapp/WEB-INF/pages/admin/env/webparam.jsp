@@ -25,9 +25,9 @@
 	<div class="row-fluid">
 		<div class="span12 tabbable-custom">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab_1_1" data-toggle="tab">应用服务器环境</a></li>
-				<li class=""><a href="#tab_1_2" data-toggle="tab">运行概览</a></li>
-				<li class=""><a href="#tab_1_3" data-toggle="tab">Account</a></li>
+				<li class="active"><a href="#tab_1_1" data-toggle="tab">项目配置环境</a></li>
+				<li class=""><a href="#tab_1_2" data-toggle="tab">应用服务器运行概览</a></li>
+				<li class=""><a href="#tab_1_3" data-toggle="tab">数据库服务器运行概览</a></li>
 				<li class=""><a href="#tab_1_4" data-toggle="tab">Projects</a></li>
 			</ul>
 			<div class="tab-content">

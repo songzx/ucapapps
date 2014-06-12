@@ -22,14 +22,14 @@
 		<repository>
 			<id>ucap-public</id>
 			<name>ucap-public</name>
-			<url>http://192.168.1.201:18081/nexus/content/groups/public/</url>
+			<url>http://192.168.1.121:18081/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://192.168.1.201:18081/nexus/content/groups/public/</url>
+			<url>http://192.168.1.121:18081/nexus/content/groups/public/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
