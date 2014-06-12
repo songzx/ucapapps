@@ -42,7 +42,7 @@ public class Menu implements Serializable {
 	private int isvalid;//是否有效:0:否,1:是
 	
 	@OneToMany
-	@JoinTable(name = "ADMIN_MENU_FUNCTION")
+	@JoinTable(name = "ADMIN_AUTHZ_MENU_FUNCTION")
 	private List<Function> functions = new ArrayList<>();
 	
 	public String getId() {
