@@ -30,14 +30,4 @@ public class UcapAdminController {
 	}
 	
 	
-	public static void main(String[] args) {
-		File file = new File("D:\\coding\\ucapapps\\ucapapps\\admincomp\\src\\main\\webapp\\WEB-INF\\pages\\admin");
-		for(File tmp : file.listFiles()){
-			System.out.println(tmp.getName()+"|"+tmp.getName().substring(tmp.getName().lastIndexOf(".")+1));
-			if(tmp.getName().substring(tmp.getName().lastIndexOf(".")+1).equals("html")){
-				tmp.renameTo(new File(tmp.getAbsolutePath().replace(".html", ".jsp")));
-			}
-			//tmp.renameTo(dest)
-		}
-	}
 }

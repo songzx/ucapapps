@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="authorityunit">
 		<provider>org.apache.openjpa.persistence.DecryptPersistenceProviderImpl</provider>
-
+		<!-- <mapping-file>orm_components.xml</mapping-file> -->
+		
 		<class>com.ucap.ucapmetamodel.example.SingleTable</class>
 
 		<class>com.ucap.ucapmetamodel.example.Student</class>
@@ -16,17 +17,32 @@
 
 		<class>com.ucap.ucapmetamodel.example.Manys1</class>
 		<class>com.ucap.ucapmetamodel.example.Manys2</class>
-		
+
 		<!-- 主从表 -->
 		<class>com.ucap.ucapmetamodel.example.Parent</class>
 		<class>com.ucap.ucapmetamodel.example.Son</class>
-		
+
 		<class>com.ucap.ucapmetamodel.components.WebAccount.WebAccount</class>
 		<class>com.ucap.ucapmetamodel.components.WebAccount.Enterprise</class>
 		<class>com.ucap.ucapmetamodel.components.WebAccount.LoginLog</class>
 		<class>com.ucap.ucapmetamodel.components.WebAccount.Person</class>
-
-
+		
+		<!-- 后台 -->
+		<class>com.ucap.ucapmetamodel.admincomp.account.Account</class>
+		<class>com.ucap.ucapmetamodel.admincomp.account.AccountInfo</class>
+		<class>com.ucap.ucapmetamodel.admincomp.account.LoginLog</class>
+		
+		<class>com.ucap.ucapmetamodel.admincomp.authz.Function</class>
+		<class>com.ucap.ucapmetamodel.admincomp.authz.Menu</class>
+		
+		<class>com.ucap.ucapmetamodel.admincomp.dept.Dept</class>
+		
+		<class>com.ucap.ucapmetamodel.admincomp.dictionary.Dictionary</class>
+		<class>com.ucap.ucapmetamodel.admincomp.dictionary.InfoDictionary</class>
+		
+		<class>com.ucap.ucapmetamodel.admincomp.role.Role</class>
+		
+		
 		<properties>
 			<property name="openjpa.ConnectionURL" value="jdbc:mysql://192.168.1.121:3306/ucapapps" />
 			<property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver" />
@@ -49,7 +65,7 @@
 			<property name="openjpa.ConnectionFactoryProperties"
 				value="PrintParameters=true,PrettyPrintLineLength=80" />
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=True)" />
-			<property name="openjpa.jdbc.DBDictionary"	value="org.apache.openjpa.jdbc.sql.MySQLDictionary" />
+			<property name="openjpa.jdbc.DBDictionary" value="org.apache.openjpa.jdbc.sql.MySQLDictionary" />
 			<!-- 查询结果一次转化为对象的最多个数，相当于 JDBC的结果集对象Statement.set FetchSize。默认为-1，表示所有的查询对象立即初始化；0表示使用 
 				JDBC驱动默认的数值。 -->
 			<property name="openjpa.FetchBatchSize" value="0" />
@@ -57,7 +73,7 @@
 			<property name="openjpa.DataCache" value="true(CacheSize=5000, SoftReferenceSize=100)" />
 			<!-- 启用查询结果缓存，缓存的容量为1000，并且软引用的容量为100 -->
 			<property name="openjpa.QueryCache" value="true(CacheSize=5000, SoftReferenceSize=100)" />
-			
+
 			<property name="openjpa.Log" value="SQL=TRACE" />
 			<!-- <property name="openjpa.Log" value="SQL=TRACE,File=/data/gsmpro/logs/authority_openjpa.log,DefaultLevel=WARN, 
 				Runtime=INFO, Tool=INFO"/> -->
