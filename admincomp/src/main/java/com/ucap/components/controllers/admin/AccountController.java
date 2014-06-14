@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @version V1.0
  */
 @Controller
-@RequestMapping(value = "account", method = { RequestMethod.GET, RequestMethod.POST })
+@RequestMapping(value = "account", method = { RequestMethod.GET, RequestMethod.POST },produces = "application/json")
 public class AccountController {
 
+	@RequestMapping(value = "/list")
 	public Map<String, Object> list(@RequestParam Map<String,String> param) {
 		Map<String, Object> result = new HashMap<>();
 		List<Map<String, Object>> data = new ArrayList<>();
@@ -45,18 +46,21 @@ public class AccountController {
 		return result;
 	}
 
+	@RequestMapping(value = "/add")
 	public Map<String, Object> add() {
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", true);
 		return result;
 	}
 
+	@RequestMapping(value = "/remove")
 	public Map<String, Object> remove() {
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", true);
 		return result;
 	}
 
+	@RequestMapping(value = "/modify")
 	public Map<String, Object> modify() {
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", true);
