@@ -160,7 +160,7 @@ var Index = function () {
                 ]
             });
         },
-        initCharts: function () {
+        initCharts: function (url) {
             if (!jQuery.plot) {
                 return;
             }
@@ -329,50 +329,67 @@ var Index = function () {
                  //server load
                 $('#load_statistics_loading').hide();
                 $('#load_statistics_content').show();
-                var updateInterval = 30;
-                var plot_statistics = $.plot($("#load_statistics"), [getRandomData()], {
-                series: {
-                    shadowSize: 1
-                },
-                lines: {
-                    show: true,
-                    lineWidth: 0.2,
-                    fill: true,
-                    fillColor: {
-                        colors: [{
-                                opacity: 0.1
-                            }, {
-                                opacity: 1
-                            }
-                        ]
-                    }
-                },
-                yaxis: {
-                    min: 0,
-                    max: 100,
-                    tickFormatter: function (v) {
-                        return v + "%";
-                    }
-                },
-                xaxis: {
-                    show: false
-                },
-                colors: ["#e14e3d"],
-                grid: {
-                    tickColor: "#a8a3a3",
-                    borderWidth: 0
-                }
+                
+                var linechar = new Highcharts.Chart({
+                	title : {
+						text : 'CPU运行情况'
+					},
+					yAxis : {
+						max : 100,
+						title : {
+							text : '运行百分比(%)'
+						},
+						labels : {
+							formatter : function() {
+								return this.value  + '%';
+							}
+						}
+					},
+					xAxis : {
+						labels :{
+							formatter : function(){
+								return this.value;
+							}
+						},
+						title : {
+							text : '每分钟'
+						}
+					},
+					credits:{
+						enabled : false
+					},
+					chart:{
+						renderTo : 'load_statistics'
+					},
+					tooltip:{
+						pointFormat:'<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}%</b><br/>.'
+					}
                 });
-                function statisticsUpdate() {
-                plot_statistics.setData([getRandomData()]);
-                plot_statistics.draw();
-                setTimeout(statisticsUpdate, updateInterval);
-                }
-                statisticsUpdate();
-                $('#load_statistics').bind("mouseleave", function () {
-                    $("#tooltip").remove();
-                });
+                var activechar = function(){
+                	$.ajax({
+						url:url,
+						dataType:"json",
+						success: function(data){							
+							$.each(data['cpu']['cpuinfo'],function(index,data){
+								if(linechar.series.length <= index){
+									linechar.addSeries({
+										data:[data['user'].replace('%','')-0],
+										name:'每分钟第'+(index+1)+'个CPU监控'
+									},true,true);
+								}else{
+									linechar.series[index].addPoint(data['user'].replace('%','')-0);
+								}
+							});
+							
+						}
+					});
+                };
+                activechar();
+                setInterval(activechar,60000);
+                
+				
             }
+            
             if ($('#site_activities').size() != 0) {
                 //site activities
                 var previousPoint2 = null;

@@ -60,7 +60,7 @@ public class Account implements Serializable {
 
 	@OneToMany
 	@JoinTable(name = "ADMIN_ACCOUNT_LOGINLOG")
-	private List<LoginLog> loginLogs = new ArrayList<>();
+	private List<AdminLoginLog> adminloginLogs = new ArrayList<>();
 
 	public String getId() {
 		return id;
@@ -150,12 +150,11 @@ public class Account implements Serializable {
 		this.accountInfo = accountInfo;
 	}
 
-	public List<LoginLog> getLoginLogs() {
-		return loginLogs;
+	public List<AdminLoginLog> getAdminloginLogs() {
+		return adminloginLogs;
 	}
 
-	public void setLoginLogs(List<LoginLog> loginLogs) {
-		this.loginLogs = loginLogs;
+	public void setAdminloginLogs(List<AdminLoginLog> adminloginLogs) {
+		this.adminloginLogs = adminloginLogs;
 	}
-
 }

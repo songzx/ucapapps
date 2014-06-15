@@ -30,7 +30,7 @@
 		<!-- 后台 -->
 		<class>com.ucap.ucapmetamodel.admincomp.account.Account</class>
 		<class>com.ucap.ucapmetamodel.admincomp.account.AccountInfo</class>
-		<class>com.ucap.ucapmetamodel.admincomp.account.LoginLog</class>
+		<class>com.ucap.ucapmetamodel.admincomp.account.AdminLoginLog</class>
 		
 		<class>com.ucap.ucapmetamodel.admincomp.authz.Function</class>
 		<class>com.ucap.ucapmetamodel.admincomp.authz.Menu</class>

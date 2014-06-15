@@ -37,6 +37,7 @@ public class EnvController {
 			webparam.put("jvmproperty", systemInfo.getJvmProperty());
 			//webparam.put("os", systemInfo.getOs());
 			webparam.put("memory",systemInfo.getMemory());
+			webparam.put("cpu",systemInfo.getCPU());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

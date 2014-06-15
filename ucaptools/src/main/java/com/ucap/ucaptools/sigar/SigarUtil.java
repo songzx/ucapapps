@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -70,15 +72,24 @@ public class SigarUtil implements SystemInfo {
 			CpuInfo infos[] = sigar.getCpuInfoList();
 			CpuPerc cpuList[] = null;
 			cpuList = sigar.getCpuPercList();
+			List<Map<String, Object>> list = new ArrayList<>();
+			Map<String,Object> infomap = null;
 			for (int i = 0; i < infos.length; i++) {// 不管是单块CPU还是多CPU都适用
+				infomap = new HashMap<>();
 				CpuInfo info = infos[i];
-				System.out.println("第" + (i + 1) + "块CPU信息");
-				System.out.println("CPU的总量MHz:    " + info.getMhz());// CPU的总量MHz
-				System.out.println("CPU生产商:    " + info.getVendor());// 获得CPU的卖主，如：Intel
-				System.out.println("CPU类别:    " + info.getModel());// 获得CPU的类别，如：Celeron
-				System.out.println("CPU缓存数量:    " + info.getCacheSize());// 缓冲存储器数量
-				printCpuPerc(cpuList[i], result);
+				infomap.put("cpudesc", "第" + (i + 1) + "块CPU信息");
+				// CPU的总量MHz
+				infomap.put("mhz", info.getMhz());
+				// 获得CPU的卖主，如：Intel
+				infomap.put("vendor", info.getVendor());
+				// 获得CPU的类别，如：Celeron
+				infomap.put("model", info.getModel());
+				// 缓冲存储器数量
+				infomap.put("cacheSize", info.getCacheSize());
+				printCpuPerc(cpuList[i], infomap);
+				list.add(infomap);
 			}
+			result.put("cpuinfo", list.toArray());
 		} catch (SigarException e) {
 			e.printStackTrace();
 		}
@@ -87,12 +98,18 @@ public class SigarUtil implements SystemInfo {
 	}
 
 	private static void printCpuPerc(CpuPerc cpu, Map<String, Object> result) {
-		System.out.println("CPU用户使用率:    " + CpuPerc.format(cpu.getUser()));// 用户使用率
-		System.out.println("CPU系统使用率:    " + CpuPerc.format(cpu.getSys()));// 系统使用率
-		System.out.println("CPU当前等待率:    " + CpuPerc.format(cpu.getWait()));// 当前等待率
-		System.out.println("CPU当前错误率:    " + CpuPerc.format(cpu.getNice()));//
-		System.out.println("CPU当前空闲率:    " + CpuPerc.format(cpu.getIdle()));// 当前空闲率
-		System.out.println("CPU总的使用率:    " + CpuPerc.format(cpu.getCombined()));// 总的使用率
+		// 用户使用率
+		result.put("user", CpuPerc.format(cpu.getUser()));
+		// 系统使用率
+		result.put("sys", CpuPerc.format(cpu.getSys()));
+		// 当前等待率
+		result.put("wait", CpuPerc.format(cpu.getWait()));
+		//CPU当前错误率
+		result.put("nice", CpuPerc.format(cpu.getNice()));
+		// 当前空闲率
+		result.put("idle", CpuPerc.format(cpu.getIdle()));
+		// 总的使用率
+		result.put("combined",CpuPerc.format(cpu.getCombined()));
 	}
 
 	@Override

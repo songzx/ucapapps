@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "ADMIN_ACCOUNTLOG")
-public class LoginLog implements Serializable {
+public class AdminLoginLog implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid-hex")
 	@Column(length = 50, name = "ID")
