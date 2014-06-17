@@ -45,8 +45,14 @@
 					<div id="load_memory_loading">
 						<img src="<c:url value="/admin/media/image/loading.gif"/>" alt="loading" />
 					</div>
-					<div id="load_memory_content" class="hide">
-						
+					<div id="load_memory_content" class="hide"></div>
+					
+					<hr />
+					<div id="load_statistics_loading">
+						<img src="<c:url value="/admin/media/image/loading.gif"/>" alt="loading" />
+					</div>
+					<div id="load_statistics_content" class="hide">
+						<div id="load_statistics" class="chart"></div>
 					</div>
 				</div>
 				<!--tab_1_2-->

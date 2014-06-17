@@ -58,8 +58,6 @@ public class UcapSystemListener implements ServletContextListener {
 			System.setProperty(UcapSystemConfigConst.WEBAPP_ENCODING, encoding);
 			System.setProperty(UcapSystemConfigConst.WEBAPP_INDEXS, indexs);
 			
-			
-			
 
 			File serverfile = new File(serverdir);
 			if (!serverfile.exists()) {
