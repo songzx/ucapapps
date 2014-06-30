@@ -27,6 +27,7 @@ var Env = function() {
 	
 	function serverinfo(url,data){
 		// server load
+		// 内存配置
 		$('#load_memory_loading').hide();
 		$('#load_memory_content').show();
 		var cpuchar = new Highcharts.Chart({
@@ -71,7 +72,7 @@ var Env = function() {
 				name : '临时内存每分钟监控'
 			} ]
         });
-		
+		// CPU监牢
 		$('#load_statistics_loading').hide();
         $('#load_statistics_content').show();
         var linechar = new Highcharts.Chart({
@@ -109,7 +110,6 @@ var Env = function() {
 				pointFormat:'<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}%</b><br/>.'
 			}
         });
-        
         
         var activechar = function(){
         	$.ajax({

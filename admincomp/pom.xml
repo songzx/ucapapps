@@ -16,6 +16,11 @@
 		<artifactId>ucaptools</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
+	<dependency>
+		<groupId>com.ucap</groupId>
+		<artifactId>ucapmetamodel</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
 	</dependencies>
 	<build>
 		<finalName>admincomp</finalName>

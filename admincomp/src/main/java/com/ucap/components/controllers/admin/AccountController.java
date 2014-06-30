@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,7 +48,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/add")
-	public Map<String, Object> add() {
+	public Map<String, Object> add(@RequestParam Map<String,String> param) {
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", true);
 		return result;
@@ -55,6 +56,13 @@ public class AccountController {
 
 	@RequestMapping(value = "/remove")
 	public Map<String, Object> remove() {
+		Map<String, Object> result = new HashMap<>();
+		result.put("result", true);
+		return result;
+	}
+	
+	@RequestMapping(value = "/read")
+	public Map<String, Object> read() {
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", true);
 		return result;

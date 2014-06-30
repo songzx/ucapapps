@@ -37,8 +37,7 @@ public class AdminLoginLog implements Serializable {
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	@Column(nullable = true)
-	private String loginfo;//json的方式,记录IP,Mac,logintime,loginsuccess
-
+	private String loginfo;//json的方式,记录IP,Mac,logintime,loginsucces
 	public String getId() {
 		return id;
 	}
