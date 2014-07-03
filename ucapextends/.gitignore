@@ -1,1 +1,8 @@
+/.settings
 /target
+/bin
+/.project
+/.classpath
+/logs
+/tmpdir
+/.git

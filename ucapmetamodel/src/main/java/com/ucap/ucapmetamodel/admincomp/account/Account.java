@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.ucap.ucapmetamodel.admincomp.dept.Dept;
 import com.ucap.ucapmetamodel.admincomp.role.Role;
 
 /**
@@ -61,6 +62,9 @@ public class Account implements Serializable {
 	@OneToMany
 	@JoinTable(name = "ADMIN_ACCOUNT_LOGINLOG")
 	private List<AdminLoginLog> adminloginLogs = new ArrayList<>();
+
+	@OneToOne
+	private Dept dept;
 
 	public String getId() {
 		return id;
@@ -157,4 +161,13 @@ public class Account implements Serializable {
 	public void setAdminloginLogs(List<AdminLoginLog> adminloginLogs) {
 		this.adminloginLogs = adminloginLogs;
 	}
+
+	public Dept getDept() {
+		return dept;
+	}
+
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
+
 }
