@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
+@IMPORT url("tools.css");
 body{
-	background:#c8c8c8;
 	margin: 0px 0px;
 	padding: 0px 0px;
 	font-size: small;

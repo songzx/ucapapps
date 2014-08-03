@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>前台</title>
-<link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>"
-	rel="stylesheet" media="screen" />
+<title>代购网</title>
+
+<link href="<c:url value="/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" media="screen" />
+<link href="<c:url value="/bootstrap/css/bootstrap-responsive.min.css"/>" rel="stylesheet" media="screen" />
+<link href="<c:url value="/css/base.css"/>" rel="stylesheet" media="screen" />
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="<c:url value="/js/jquery-1.9.0.min.js"/>"></script>
@@ -15,89 +16,40 @@
 <script src="<c:url value="/js/jquery-2.1.1.js"/>"></script>
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 </head>
-<body style="maring:0px 0px;padding: 0px 0px;">
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="brand" href="#">UCAP System V1.0</a>
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="active"><a href="#">首 页</a></li>
-						<li><a href="aboutus">关于我们</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">应用组件<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">个人门户</a></li>
-								<li><a href="#">咨询投诉</a></li>
-								<li><a href="#">报表统计</a></li>
-							</ul></li>
-					</ul>
-					<form class="navbar-form pull-right" action="<c:url value="/restful/webaccount/login"/>" method="post">
-						<input name="account" class="span2" type="text" placeholder="帐号" /> 
-						<input name="passwd" class="span2" type="password" placeholder="密码"/>
-						<button type="submit" class="btn btn-primary btn-small">登 陆</button>
-						<a href="<c:url value="/restful/web/webaccount_webaccount"/>" class="btn btn-primary btn-small">注册 &raquo;</a>
-					</form>
+<body>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="container" style="padding:5px 0px;border: solid 1px #ccc;">
+						<div class="span6">淘宝登录|QQ登录|请登陆 免费注册</div>
+						<div class="span6" style="text-align:right;">我的代购|帮助中心|客服在线</div>
+					</div>
 				</div>
-				<!--/.nav-collapse -->
 			</div>
+
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="container">
+						<div class="span2">
+							<img class="img-rounded" alt="150x60" style="width: 150px; height: 60px;">
+						</div>
+						<div class="span10" style="height: 60px;">
+							<div class="row-fluid input-append" style="padding-top:15px;">
+								<input class="span7" placeholder="代购信息信息在这输入,如连衣裙" type="text">
+								<button class="btn" type="button">代购查询</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="container">2</div>
+
+			<div class="row-fluid">1</div>
 		</div>
 	</div>
 
-	<div class="container">
-
-		<!-- Main hero unit for a primary marketing message or call to action -->
-		<div class="hero-unit">
-			<h3>Hello, UCAP System V1.0!</h3>
-			<p>This is a template for a simple marketing or informational
-				website. It includes a large callout called the hero unit and three
-				supporting pieces of content. Use it as a starting point to create
-				something more unique.</p>
-			<p>
-				<a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a>
-			</p>
-		</div>
-
-		<!-- Example row of columns -->
-		<div class="row">
-			<div class="span4">
-				<h3>关于权限</h3>
-				<p><ul>
-					<li>数据过滤权限</li>
-					<li>菜单权限</li>
-					<li>功能点权限</li>
-					<li>流程配置权限</li>
-				</ul></p>
-				<p>
-					<a class="btn" href="#">详细信息 &raquo;</a>
-				</p>
-			</div>
-			<div class="span4">
-				<h3>关于流程</h3>
-				<p><ul>
-					<li>基于JBPM5,配合流程角色进行流程的走向,可视化配置</li>
-				</ul></p>
-				<p>
-					<a class="btn" href="#">详细信息 &raquo;</a>
-				</p>
-			</div>
-			<div class="span4">
-				<h3>关于组件</h3>
-				<p><ul>
-					<li>可视化配置定制组件,可配置数据过滤权限,流程走向权限</li>
-				</ul></p>
-				<p>
-					<a class="btn" href="#">详细信息 &raquo;</a>
-				</p>
-			</div>
-		</div>
-
-
-	</div>
 </body>
 </html>
