@@ -1,0 +1,8 @@
+<request>
+	<clientid>TVDG0001</clientid>
+	<service>verifyTicket</service>
+	<input>
+		<channelcode>1009</channelcode>
+		<ticketstr>E887BF307EB85017A886E917344915B91BDCE31BBED4553DD14DD84247CB9053D06572E3D7F5C1C7</ticketstr>
+	</input>
+</request>
