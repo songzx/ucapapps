@@ -8,7 +8,7 @@
 		Env.init($('input[name=url]').val());
 	});
 </script>
-<input type="hidden" name="url" value="<c:url value="/ucapadmin/env/getwebparam"/>" />
+<input type="hidden" name="url" value="<c:url value="/monitoradmin/env/getwebparam"/>" />
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">

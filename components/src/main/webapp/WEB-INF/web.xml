@@ -60,6 +60,8 @@
 		<servlet-name>dispatcherresource</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 
 	<error-page>
 		<error-code>404</error-code>
 		<location>/404.html</location>
@@ -72,6 +74,9 @@
 		<error-code>403</error-code>
 		<location>/403.html</location>
 	</error-page>
+	 -->
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.shtml</welcome-file>

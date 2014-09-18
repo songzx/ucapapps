@@ -17,19 +17,20 @@
 		<module>ucapcas</module>
 		<module>ucapextends</module>
     <module>monitor</module>
+    <module>jmsserver</module>
   </modules>
 	<repositories>
 		<repository>
 			<id>ucap-public</id>
 			<name>ucap-public</name>
-			<url>http://114.215.142.191:18081/nexus/content/groups/public/</url>
+			<url>http://127.0.0.1:18081/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://114.215.142.191:18081/nexus/content/groups/public/</url>
+			<url>http://127.0.0.1:18081/nexus/content/groups/public/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>

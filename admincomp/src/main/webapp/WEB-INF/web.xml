@@ -57,7 +57,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>dispatcherrestful</servlet-name>
-		<url-pattern>/ucapadmin/*</url-pattern>
+		<url-pattern>/monitoradmin/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>

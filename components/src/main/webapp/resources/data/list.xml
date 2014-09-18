@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modellist>
+	<searchform>
+		<keyword value="关键字" formtype="text"></keyword>
+	</searchform>
+	
+	<header>
+		<value><![CDATA[标题]]></value>
+		<value><![CDATA[创建时间]]></value>
+	</header>
+
+	
+	<pager>
+		<totalrows value="总行数">102</totalrows>
+		<currentpage value="当前页码">1</currentpage>
+		<totalpages value="总页码">34</totalpages>
+		<pagerows value="每行条数">3</pagerows>
+	</pager>
+	
+</modellist>

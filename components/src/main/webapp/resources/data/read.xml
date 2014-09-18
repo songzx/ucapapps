@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model value="m001">
+	<id display="none"><![CDATA[001]]></id>
+	<title value="标题"><![CDATA[广东省测试示例]]></title>
+	<createtime value="创建时间"><![CDATA[2014-01-01]]></createtime>
+	<content value="内容"><![CDATA[广东省测试示例]]></content>
+	
+	<sf value="省份" tolist="city" status="start">
+		<value value="01" tolist="gd"><![CDATA[广东省]]></value>
+	</sf>
+	<city value="市属" tolist="qs">
+		<value value="001" parentid="gd" tolist="gz"><![CDATA[广州市]]></value>
+	</city>
+	<qs value="区属" status="end">
+		<value value="0001" parentid="gz"><![CDATA[天河区]]></value>
+	</qs>
+	
+</model>

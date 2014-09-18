@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model value="m001">
+	<id formtype="hidden"><![CDATA[001]]></id>
+	<title value="标题" formtype="text" readonly="true"><![CDATA[广东省测试示例]]></title>
+	<createtime value="创建时间" formtype="date"><![CDATA[2014-01-01]]></createtime>
+	<content value="内容" formtype="textarea"><![CDATA[广东省测试示例]]></content>
+	
+	<sf value="省份" formtype="select" tolist="city" status="start" defaultvalue="01">
+		<value value="01" tolist="gd"><![CDATA[广东省]]></value>
+		<value value="02" tolist="gs"><![CDATA[广西省]]></value>
+		<value value="02" tolist="wn"><![CDATA[湖南省]]></value>
+	</sf>
+	<city value="市属" formtype="select" tolist="qs" defaultvalue="001">
+		<value value="001" parentid="gd" tolist="gz"><![CDATA[广州市]]></value>
+		<value value="002" parentid="gd" tolist="fs"><![CDATA[佛山市]]></value>
+	</city>
+	<qs value="区属" formtype="select" status="end"  defaultvalue="0001">
+		<value value="0001" parentid="gz"><![CDATA[天河区]]></value>
+		<value value="0002" parentid="gz"><![CDATA[荔湾区]]></value>
+	</qs>
+	
+</model>

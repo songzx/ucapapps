@@ -1,0 +1,9 @@
+/.settings
+/target
+/bin
+/.project
+/.classpath
+/logs
+/tmpdir
+/.git
+/activemq-data

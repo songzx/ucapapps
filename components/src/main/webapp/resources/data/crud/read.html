@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>读取</title>
+<script type="text/javascript" src="/components/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/components/data/add.js"></script>
+<script type="text/javascript">
+$(function(){
+	var v_selectlist = {};
+	$.ajax({
+		url:'/components/data/read.xml',
+		dataType:'xml',
+		success:function(data){
+			var v_html = '<ul>';
+			
+			$.each($('model',data).children(),function(){
+				if($(this).attr('display') == 'none'){
+					return ;
+				}
+				v_html += '<li>'+$(this).attr('value')+':"'+$(this).text()+'" </li>';
+			});
+			
+			v_html += '</ul>';
+			
+			$('#read').html(v_html);
+		}
+	});
+});
+</script>
+</head>
+<body>
+<div id="read">
+</div>
+</body>
+</html>

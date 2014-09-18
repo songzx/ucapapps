@@ -7,9 +7,9 @@
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ucap sytem v1.0</title>
-<meta content="ucap sytem v1.0" name="description" />
-<meta content="ucap" name="author" />
+<title>monitor sytem v1.0</title>
+<meta content="monitor sytem v1.0" name="description" />
+<meta content="monitor" name="author" />
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="<c:url value="/admin/media/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/admin/media/css/bootstrap-responsive.min.css"/>" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
 <body class="login">
 	<!-- BEGIN LOGO -->
 	<div class="logo">
-		<h4 style="color:#fff;">Ucap System v1.0</h4>
+		<h4 style="color:#fff;">monitor System v1.0</h4>
 	</div>
 	<!-- END LOGO -->
 	<!-- BEGIN LOGIN -->
@@ -106,7 +106,7 @@
 	</div>
 	<!-- END LOGIN -->
 	<!-- BEGIN COPYRIGHT -->
-	<div class="copyright">2014 &copy; Ucap System v1.0.</div>
+	<div class="copyright">2014 &copy; monitor System v1.0.</div>
 	<!-- END COPYRIGHT -->
 	<!-- END BODY -->
 </html>

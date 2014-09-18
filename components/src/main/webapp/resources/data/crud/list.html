@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>读取</title>
+<script type="text/javascript" src="/components/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/components/data/add.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : '/components/data/list.xml',
+			dataType : 'xml',
+			success : function(data) {
+				$.each($('modellist', data), function() {
+					var v_searchform = '';
+					$.each($('searchform', this).children(), function() {
+						if ("text" == $(this).attr('formtype')) {
+							v_searchform += '<li>' + $(this).attr('value') + ':<input type="text" name="' + $(this).context.localName + '" /></li>';
+						}
+						if ("textarea" == $(this).attr('formtype')) {
+							v_searchform += '<li>' + $(this).attr('value') + ':<textarea name="' + $(this).context.localName + '" ></textarea></li>';
+						}
+						if ("date" == $(this).attr('formtype')) {
+							v_searchform += '<li>' + $(this).attr('value') + ':<input type="text" name="' + $(this).context.localName + '" /></li>';
+						}
+						if ("select" == $(this).attr('formtype')) {
+							var v_option = '<option value="">--请选择--</option>';
+							$.each($(this).find('value'), function() {
+								v_option += '<option value="' + $(this).attr('value') + '">' + $(this).text() + '</option>';
+							});
+							v_searchform += '<li>' + $(this).attr('value') + ':<select name="' + $(this).context.localName + '" >' + v_option
+									+ '</select></li>';
+						}
+					});
+					$('#searchform').html(v_searchform);
+					
+					//头部
+					var v_header = '<ul>';
+					$.each($('header', this).find('value'), function() {
+						v_header += '<li>'+$(this).text()+'</li>'
+					});
+					v_header += '<li>操作</li>';
+					v_header += '</ul><hr/>';
+					$('#header').html(v_header);
+					
+					
+					var v_pager = '<ul>';
+					v_pager += '<li>'+(($('pager pagerows', this).text() -0 ) * ($('pager currentpage', this).text() -1) + 1) +'-'+(($('pager pagerows', this).text() -0 ) * $('pager currentpage', this).text() )+'/'+$('pager totalrows', this).text()+'</li>';
+					v_pager += '<li>'+$('pager currentpage', this).text()+'/'+$('pager totalpages', this).text()+'</li>';
+					v_pager += '</ul><hr/>';
+					$('#pager').html(v_pager);
+
+				});
+			}
+		});
+
+		
+		$.ajax({
+			url : '/components/data/list_data.xml',
+			dataType : 'xml',
+			success : function(data) {
+				var v_html = '';
+				$.each($('modellist model', data), function() {
+					v_html += '<ul>';
+					$.each($(this).children(), function() {
+						if ($(this).attr('islist') != 'true') {
+							return;
+						}
+						if ($(this).attr('display') == 'none') {
+							return;
+						}
+						v_html += '<li>' + $(this).attr('value') + ':"' + $(this).text() + '" </li>';
+					});
+					v_html += '<li><a href="">详细...</a></li>';
+					v_html += '</ul><hr/>';
+				});
+				$('#list').html(v_html);
+			}
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div>
+		<div id="searchform"></div>
+		<div id="header"></div>
+		<div id="list"></div>
+		<div id="pager"></div>
+	</div>
+</body>
+</html>
